@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://addons/health_bar_2d/examples/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://addons/health_bar_2d/health_bar_2d.tscn" type="PackedScene" id=2]
+[ext_resource path="res://addons/health_bar_2d/examples/turrent.tscn" type="PackedScene" id=3]
+[ext_resource path="res://addons/health_bar_2d/examples/heal.tscn" type="PackedScene" id=4]
 
 [node name="World" type="Node2D"]
 
@@ -17,13 +19,29 @@ align = 1
 valign = 1
 uppercase = true
 
-[node name="KinematicBody2D" parent="." instance=ExtResource( 1 )]
+[node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 237, 152 )
 
-[node name="HealthBar2D" parent="KinematicBody2D" instance=ExtResource( 2 )]
+[node name="HealthBar2D" parent="Player" instance=ExtResource( 2 )]
 _static = true
+_gradient = true
 _offset = Vector2( 0, -8 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 256, 148 )
 current = true
+
+[node name="Turrent" parent="." instance=ExtResource( 3 )]
+position = Vector2( 121, 202 )
+
+[node name="Turrent2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 97, 59 )
+
+[node name="Turrent3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 405, 77 )
+
+[node name="Turrent4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 358, 221 )
+
+[node name="Heal" parent="." instance=ExtResource( 4 )]
+position = Vector2( 246, 134 )
