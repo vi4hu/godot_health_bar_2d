@@ -27,6 +27,13 @@ config/icon="res://icon.png"
 
 HealthBar2d="*res://addons/health_bar_2d/health_bar_2d.tscn"
 
+[display]
+
+window/size/width=512
+window/size/height=300
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true

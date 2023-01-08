@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://addons/health_bar_2d/examples/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://addons/health_bar_2d/health_bar_2d.tscn" type="PackedScene" id=2]
+
+[node name="World" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_top = -5.0
+margin_right = 513.0
+margin_bottom = 163.0
+text = "Use A,W,S and D keys to move"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="KinematicBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 237, 152 )
+
+[node name="HealthBar2D" parent="KinematicBody2D" instance=ExtResource( 2 )]
+_static = true
+_offset = Vector2( 0, -8 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 256, 148 )
+current = true

@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://addons/health_bar_2d/examples/player.gd" type="Script" id=1]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 4.12311
+
+[node name="KinematicBody2D" type="KinematicBody2D"]
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+scale = Vector2( 0.933725, 0.826943 )
+color = Color( 0.0705882, 0.290196, 0.34902, 1 )
+polygon = PoolVector2Array( 0, -6.04637, -4.02128, -3.02703, -3.82979, 4.10811, 0, 8, 4, 4, 4, -3 )
+
+[node name="Polygon2D2" type="Polygon2D" parent="."]
+scale = Vector2( 0.675475, 0.598226 )
+color = Color( 0.478431, 0.478431, 0.478431, 1 )
+polygon = PoolVector2Array( -2.87234, -0.216216, -1.91489, 0.648649, -0.957447, 0.864865, 0.765957, 0.864865, 2.29787, 0.432432, 3.06383, -0.216216, 3.06383, 0.432432, 2.29787, 1.08108, 0.765957, 1.51351, -0.957447, 1.51351, -1.91489, 1.2973, -3.06383, 0.216216 )
+
+[node name="Polygon2D3" type="Polygon2D" parent="."]
+scale = Vector2( 0.837804, 0.741992 )
+color = Color( 0.478431, 0.478431, 0.478431, 1 )
+polygon = PoolVector2Array( -2.29787, -3.02703, -2.29787, -1.94595, -0.765957, -1.94595, -0.957447, -3.02703 )
+
+[node name="Polygon2D4" type="Polygon2D" parent="."]
+scale = Vector2( 0.76779, 0.679984 )
+color = Color( 0.478431, 0.478431, 0.478431, 1 )
+polygon = PoolVector2Array( 0.957447, -3.24324, 1.34043, -2.16216, 2.48936, -1.94595, 2.48936, -3.02703 )

@@ -4,8 +4,8 @@
 [ext_resource path="res://addons/health_bar_2d/resources/health_bar_texture.png" type="Texture" id=2]
 
 [node name="HealthBar2D" type="TextureProgress"]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 12.0
+margin_bottom = 1.0
 value = 50.0
 texture_under = ExtResource( 2 )
 texture_progress = ExtResource( 2 )
