@@ -1,8 +1,9 @@
 # HealthBar2D
 
 <p align="center">
-  <img height="150px" src="https://user-images.githubusercontent.com/66784253/211197568-d4bd1a7b-f7cb-4046-b2a7-7dc829fc9343.png" alt="addon-icon"/>
+  <img height="150px" src="https://user-images.githubusercontent.com/66784253/211215415-80537f1b-c3b8-42ea-90ea-bf20cdafd01e.png" alt="addon-icon"/>
 </p>
+
 
 > Note: this addon is under development/testing right now
 
