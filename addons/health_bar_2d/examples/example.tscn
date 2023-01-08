@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://addons/health_bar_2d/examples/player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://addons/health_bar_2d/health_bar_2d.tscn" type="PackedScene" id=2]
+[ext_resource path="res://addons/health_bar_2d/health_bar_2d.gd" type="Script" id=2]
 [ext_resource path="res://addons/health_bar_2d/examples/turrent.tscn" type="PackedScene" id=3]
 [ext_resource path="res://addons/health_bar_2d/examples/heal.tscn" type="PackedScene" id=4]
+[ext_resource path="res://addons/health_bar_2d/resources/health_bar_texture.png" type="Texture" id=5]
 
 [node name="World" type="Node2D"]
 
@@ -22,10 +23,16 @@ uppercase = true
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 237, 152 )
 
-[node name="HealthBar2D" parent="Player" instance=ExtResource( 2 )]
-_static = true
-_gradient = true
-_offset = Vector2( 0, -8 )
+[node name="HealthBar2D" type="TextureProgress" parent="Player"]
+margin_right = 12.0
+margin_bottom = 1.0
+value = 5.0
+texture_under = ExtResource( 5 )
+texture_progress = ExtResource( 5 )
+tint_under = Color( 0.498039, 0.498039, 0.498039, 0.478431 )
+tint_progress = Color( 0, 0.415686, 0.545098, 1 )
+script = ExtResource( 2 )
+_animation_timeout = 0.5
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 256, 148 )

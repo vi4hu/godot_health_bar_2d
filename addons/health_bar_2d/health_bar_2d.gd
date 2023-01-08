@@ -1,4 +1,3 @@
-class_name HealthBar2D
 extends TextureProgress
 
 # if false, health bar will only show itself when value is changed
