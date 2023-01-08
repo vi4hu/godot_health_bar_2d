@@ -25,7 +25,7 @@ var _tween: Tween
 
 func _ready() -> void:
 	"""Connects value_changed signal to _tween_fade or _color
-	method according to exported _static and _gradient variables
+	method according to exported _static and _gradient variables.
 	"""
 	if not _static:
 		_tween = Tween.new()
@@ -56,13 +56,13 @@ func initialize() -> void:
 
 
 func _handle_value(val: int) -> void:
-	"""Sets the parent health to texture progress value
+	"""Sets the parent health to texture progress value.
 	"""
 	value = val
 
 
 func _tween_fade(val: float) -> void:
-	"""Method handles the color of health bar
+	"""Method handles the color of health bar.
 	"""
 	yield(_tween(1), "completed")  # show
 	yield(get_tree().create_timer(_animation_timeout), "timeout")
@@ -70,18 +70,23 @@ func _tween_fade(val: float) -> void:
 
 
 func _color(val: float) -> void:
-	"""Method handles the color of health bar
+	"""Method handles the color of health bar.
 	"""
-	if val > max_value/2:
-		tint_progress = _colors.success
-	elif val < max_value/2 and val > max_value/10:
-		tint_progress = _colors.caution
-	elif val < max_value/10:
+	if _prc(val, 30):
 		tint_progress = _colors.danger
+	elif _prc(val, 55):
+		tint_progress = _colors.caution
+	else:
+		tint_progress = _colors.success
+
+
+func _prc(val: float, percentage: int) -> bool:
+	"""Method returns true if health bar is in certain percentage."""
+	return val <= max_value*(percentage/100.0)
 
 
 func _tween(value: float) -> void:
-	"""Method handles the tween animations
+	"""Method handles the tween animations.
 	"""
 	_tween.stop(self, "modulate:a")
 	_tween.interpolate_property(
