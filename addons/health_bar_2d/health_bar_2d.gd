@@ -1,10 +1,13 @@
-#tool
 class_name HealthBar2D
 extends TextureProgress
 
+# if false, health bar will only show itself when value is changed
 export(bool) var _static = false
+# if set true, health bar color will change as value decreases
 export(bool) var _gradient = false
+# time out for show/hide health bar animation
 export(float) var _animation_timeout = 1.0
+# offset of health bar from player
 export(Vector2) var _offset = Vector2(0, -6)
 
 # Colors #
@@ -18,13 +21,6 @@ const _colors = {
 var _parent: Node
 var _center_offset: Vector2 = rect_size/2
 var _tween: Tween
-
-func _enter_tree():
-	pass
-
-
-func _exit_tree():
-	pass
 
 
 func _ready() -> void:
@@ -40,13 +36,13 @@ func _ready() -> void:
 		connect("value_changed", self, "_color")
 
 
-func _process(delta):
+func _process(delta) -> void:
 	"""Initialize the health bar for use in game.
 	It must be called for HealthBar2D to work.
 	"""
 	if _parent:
 		set_rotation(-_parent.rotation)
-		set_position(_offset - _center_offset)
+		set_global_position(_parent.position + _offset - _center_offset)
 
 
 func initialize() -> void:
