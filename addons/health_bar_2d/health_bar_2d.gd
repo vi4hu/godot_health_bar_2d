@@ -20,17 +20,28 @@ const _colors = {
 var _parent: Node
 var _center_offset: Vector2 = rect_size/2
 var _tween: Tween
+var _timer: Timer
 
 
 func _ready() -> void:
+	_setup()
+
+
+func _setup() -> void:
 	"""Connects value_changed signal to _tween_fade or _color
 	method according to exported _static and _gradient variables.
 	"""
 	if not _static:
 		_tween = Tween.new()
 		add_child(_tween)
-		connect("value_changed", self, "_tween_fade")
+		connect("value_changed", self, "_show")
 		modulate.a = 0
+		
+		_timer = Timer.new()
+		add_child(_timer)
+		_timer.connect("timeout", self, "_fade")
+		_timer.wait_time = _animation_timeout
+
 	if _gradient:
 		connect("value_changed", self, "_color")
 
@@ -60,12 +71,17 @@ func _handle_value(val: int) -> void:
 	value = val
 
 
-func _tween_fade(val: float) -> void:
-	"""Method handles the color of health bar.
+func _show(val: float) -> void:
+	"""Method handles the health bar visibility.
 	"""
-	yield(_tween(1), "completed")  # show
-	yield(get_tree().create_timer(_animation_timeout), "timeout")
-	yield(_tween(0), "completed")  # hide
+	_timer.start()
+	_tween(1)
+
+
+func _fade() -> void:
+	"""Method handles the health bar visibility.
+	"""
+	_tween(0)
 
 
 func _color(val: float) -> void:
@@ -93,4 +109,3 @@ func _tween(value: float) -> void:
 		_animation_timeout, Tween.TRANS_LINEAR, Tween.EASE_OUT
 	)
 	_tween.start()
-	yield(get_tree(), "idle_frame")
