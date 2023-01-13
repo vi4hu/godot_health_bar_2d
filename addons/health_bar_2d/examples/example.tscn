@@ -29,10 +29,11 @@ margin_bottom = 1.0
 value = 5.0
 texture_under = ExtResource( 5 )
 texture_progress = ExtResource( 5 )
-tint_under = Color( 0.498039, 0.498039, 0.498039, 0.478431 )
-tint_progress = Color( 0, 0.415686, 0.545098, 1 )
+tint_under = Color( 0.105882, 0.105882, 0.105882, 0.858824 )
+tint_progress = Color( 1, 0, 0, 1 )
 script = ExtResource( 2 )
 _animation_timeout = 0.5
+_offset = Vector2( 0, -16 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 256, 148 )

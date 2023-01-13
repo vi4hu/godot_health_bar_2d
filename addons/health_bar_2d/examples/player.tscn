@@ -3,7 +3,7 @@
 [ext_resource path="res://addons/health_bar_2d/examples/player.gd" type="Script" id=1]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 4.12311
+radius = 12.1655
 
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 16
@@ -14,12 +14,13 @@ script = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
-scale = Vector2( 0.933725, 0.826943 )
+position = Vector2( 9.53674e-07, 9.53674e-07 )
+scale = Vector2( 3.26804, 2.8943 )
 color = Color( 0.0705882, 0.290196, 0.34902, 1 )
 polygon = PoolVector2Array( 0, -4.83709, -2.14196, -3.62782, -3.21294, -2.41855, -3.21294, 1.20927, -2.14196, 3.62782, 0, 4.83709, 2.14196, 3.62782, 3.21294, 1.20927, 3.21294, -2.41855, 2.14196, -3.62782 )
 
 [node name="Polygon2D2" type="Polygon2D" parent="."]
-position = Vector2( 0, 1 )
+position = Vector2( 0, 2 )
 rotation = 3.14159
 scale = Vector2( 0.675475, 0.598226 )
 color = Color( 0.478431, 0.478431, 0.478431, 1 )
