@@ -55,20 +55,21 @@ func _process(delta) -> void:
 		set_global_position(_parent.position + _offset - _center_offset)
 
 
-func initialize() -> void:
+func initialize(signal_string: String, conneted_bar_value) -> void:
 	"""Initialize the health bar for use in game.
 	It must be called for HealthBar2D to work.
 	"""
 	_parent = get_parent()
-	_parent.connect("health_changed", self, "_handle_value")
-	max_value = _parent.health
+	_parent.connect(signal_string, self, "_handle_value")
+	max_value = conneted_bar_value
 	value = max_value
 
 
 func _handle_value(val: int) -> void:
 	"""Sets the parent health to texture progress value.
 	"""
-	value = val
+	if max_value >= val:
+		value = val
 
 
 func _show(val: float) -> void:

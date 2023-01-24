@@ -10,3 +10,6 @@ export_presets.cfg
 .mono/
 data_*/
 mono_crash.*.json
+
+# swp files
+*.swp

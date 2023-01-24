@@ -1,8 +1,9 @@
 # HealthBar2D
 
 <p align="center">
-  <img height="150px" src="https://user-images.githubusercontent.com/66784253/211197568-d4bd1a7b-f7cb-4046-b2a7-7dc829fc9343.png" alt="addon-icon"/>
+  <img height="150px" src="https://user-images.githubusercontent.com/66784253/211215415-80537f1b-c3b8-42ea-90ea-bf20cdafd01e.png" alt="addon-icon"/>
 </p>
+
 
 > Note: this addon is under development/testing right now
 
@@ -30,11 +31,13 @@ var health := 10
 ```
 - Before running the project. you also need to call the `initialize` method from the parent
 
+> One can add multiple bars using this `Node` and handle value change logic inside character script, just remember to `emit` the related `signal`.
 ```gdscript
 func _ready() -> void:
-    $HealthBar2D.initialize()
+    $HealthBar2D.initialize("health_changed", health)
 ```
-- Now whenever the character takes damage, emit our `health_changed` signal with the current health
+- Now whenever the character takes damage, emit our `health_changed` signal with the current health.
+
 
 ```gdscript
 emit_signal("health_changed", health)
