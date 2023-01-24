@@ -18,3 +18,4 @@ func _process(delta) -> void:
 func _detected(body: Node2D) -> void:
 	if body.name == "Player":
 		body.hurt()
+		queue_free()

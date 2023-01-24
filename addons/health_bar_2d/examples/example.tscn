@@ -15,10 +15,9 @@ margin_left = 1.0
 margin_top = -5.0
 margin_right = 513.0
 margin_bottom = 163.0
-text = "Use A,W,S and D keys to move"
+text = "Use A,W,S and D keys to move, SHIFT to sprint"
 align = 1
 valign = 1
-uppercase = true
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 237, 152 )
@@ -34,6 +33,18 @@ tint_progress = Color( 1, 0, 0, 1 )
 script = ExtResource( 2 )
 _animation_timeout = 0.5
 _offset = Vector2( 0, -16 )
+
+[node name="HealthBar2D2" type="TextureProgress" parent="Player"]
+margin_right = 12.0
+margin_bottom = 1.0
+value = 50.0
+texture_under = ExtResource( 5 )
+texture_progress = ExtResource( 5 )
+tint_under = Color( 0.117647, 0.117647, 0.117647, 0.698039 )
+tint_progress = Color( 0.988235, 1, 0.592157, 1 )
+script = ExtResource( 2 )
+_animation_timeout = 0.5
+_offset = Vector2( 0, -22 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 256, 148 )
