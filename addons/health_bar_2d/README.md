@@ -31,7 +31,7 @@ var health := 10
 ```
 - Before running the project. you also need to call the `initialize` method from the parent
 
-> One can add multiple bars using this `Node` and handle value change logic inside character script, just remember to `emit` the related `signal`.
+> One can add multiple bars using `HealthBar2D` and handle value change logic inside character script, just remember to `emit` the related `signal`.
 ```gdscript
 func _ready() -> void:
     $HealthBar2D.initialize("health_changed", health)
