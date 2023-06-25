@@ -1,14 +1,12 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://bpsrn4wc8548e"]
 
-[ext_resource path="res://addons/health_bar_2d/health_bar_2d.gd" type="Script" id=1]
-[ext_resource path="res://addons/health_bar_2d/resources/health_bar_texture.png" type="Texture" id=2]
+[ext_resource type="Script" path="res://addons/health_bar_2d/health_bar_2d.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://cnjw8wn77f05i" path="res://addons/health_bar_2d/resources/health_bar_texture.png" id="2"]
 
-[node name="HealthBar2D" type="TextureProgress"]
-margin_right = 12.0
-margin_bottom = 1.0
+[node name="HealthBar2D" type="TextureProgressBar"]
 value = 50.0
-texture_under = ExtResource( 2 )
-texture_progress = ExtResource( 2 )
-tint_under = Color( 0.356863, 0.356863, 0.356863, 0.603922 )
-tint_progress = Color( 0.141176, 0.329412, 0.513726, 1 )
-script = ExtResource( 1 )
+texture_under = ExtResource("2")
+texture_progress = ExtResource("2")
+tint_under = Color(0.356863, 0.356863, 0.356863, 0.603922)
+tint_progress = Color(0.141176, 0.329412, 0.513726, 1)
+script = ExtResource("1")

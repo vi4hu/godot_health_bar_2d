@@ -15,14 +15,14 @@ shape = SubResource( 1 )
 [node name="Polygon2D" type="Polygon2D" parent="."]
 z_index = -1
 color = Color( 0.207843, 0.278431, 0.34902, 0.439216 )
-polygon = PoolVector2Array( 0, -29, -7, -28, -16, -24, -22, -19, -25, -13, -29, -6, -28, 4, -24, 16, -15, 25, -6, 29, 6, 29, 15, 25, 21, 21, 25, 15, 29, 7, 29, -4, 26, -12, 20, -21, 15, -25, 7, -28 )
+polygon = PackedVector2Array( 0, -29, -7, -28, -16, -24, -22, -19, -25, -13, -29, -6, -28, 4, -24, 16, -15, 25, -6, 29, 6, 29, 15, 25, 21, 21, 25, 15, 29, 7, 29, -4, 26, -12, 20, -21, 15, -25, 7, -28 )
 
 [node name="Label" type="Label" parent="."]
 modulate = Color( 1, 1, 1, 0.345098 )
-margin_left = -20.0
-margin_top = -6.0
-margin_right = 20.0
-margin_bottom = 8.0
+offset_left = -20.0
+offset_top = -6.0
+offset_right = 20.0
+offset_bottom = 8.0
 text = "heal"
 align = 1
 valign = 1

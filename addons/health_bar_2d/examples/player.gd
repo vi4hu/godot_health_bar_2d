@@ -1,10 +1,9 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
 # Need to be added to use the HealthBar2D
 signal health_changed
 signal stamina_changed
 
-var velocity = Vector2.ZERO
 var direction = Vector2.ZERO
 var speed := 100
 var sprint_speed := 150
@@ -13,6 +12,7 @@ var health := 10
 var max_stamina := 50.0
 var stamina := max_stamina
 
+
 func _ready() -> void:
 	# Need to be called to use the HealthBar2D
 	$HealthBar2D.initialize("health_changed", health)
@@ -20,8 +20,8 @@ func _ready() -> void:
 
 
 func _process(delta) -> void:
-	direction.x = int(Input.is_action_pressed("right")) - int(Input.is_action_pressed("left"))
-	direction.y = int(Input.is_action_pressed("down")) - int(Input.is_action_pressed("up"))
+	direction.x = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
+	direction.y = int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))
 	velocity = direction.normalized() * speed
 		
 	if Input.is_action_pressed("sprint") and stamina > 0:
@@ -32,7 +32,7 @@ func _process(delta) -> void:
 		stamina += 0.2
 		emit_signal("stamina_changed", stamina)
 	
-	velocity = move_and_slide(velocity, Vector2.ZERO)
+	move_and_slide()
 
 
 func hurt() -> void:

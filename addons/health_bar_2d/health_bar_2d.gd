@@ -1,13 +1,13 @@
-extends TextureProgress
+extends TextureProgressBar
 
 # if false, health bar will only show itself when value is changed
-export(bool) var _static = false
+@export var _static:bool = false
 # if set true, health bar color will change as value decreases
-export(bool) var _gradient = false
+@export var _gradient:bool = false
 # time out for show/hide health bar animation
-export(float) var _animation_timeout = 1.0
+@export var _animation_timeout:float = 1.0
 # offset of health bar from player
-export(Vector2) var _offset = Vector2(0, -6)
+@export var _offset:Vector2 = Vector2(0, -6)
 
 # Colors #
 const _colors = {
@@ -18,8 +18,8 @@ const _colors = {
 }
 
 var _parent: Node
-var _center_offset: Vector2 = rect_size/2
-var _tween: Tween
+var _center_offset: Vector2 = size/2
+#var _tween: Tween
 var _timer: Timer
 
 
@@ -32,18 +32,18 @@ func _setup() -> void:
 	method according to exported _static and _gradient variables.
 	"""
 	if not _static:
-		_tween = Tween.new()
-		add_child(_tween)
-		connect("value_changed", self, "_show")
+#		_tween = Tween.new()
+#		add_child(_tween)
+		connect("value_changed", _show)
 		modulate.a = 0
 		
 		_timer = Timer.new()
 		add_child(_timer)
-		_timer.connect("timeout", self, "_fade")
+		_timer.connect("timeout", _fade)
 		_timer.wait_time = _animation_timeout
 
 	if _gradient:
-		connect("value_changed", self, "_color")
+		connect("value_changed", _color)
 
 
 func _process(delta) -> void:
@@ -55,13 +55,14 @@ func _process(delta) -> void:
 		set_global_position(_parent.position + _offset - _center_offset)
 
 
-func initialize(signal_string: String, conneted_bar_value) -> void:
+func initialize(signal_string: String, conneted_bar_max_value) -> void:
 	"""Initialize the health bar for use in game.
 	It must be called for HealthBar2D to work.
 	"""
+	print("Info: Initialized %s %s signal" % [name, signal_string])
 	_parent = get_parent()
-	_parent.connect(signal_string, self, "_handle_value")
-	max_value = conneted_bar_value
+	_parent.connect(signal_string, _handle_value)
+	max_value = conneted_bar_max_value
 	value = max_value
 
 
@@ -104,9 +105,11 @@ func _prc(val: float, percentage: int) -> bool:
 func _tween(value: float) -> void:
 	"""Method handles the tween animations.
 	"""
-	_tween.stop(self, "modulate:a")
-	_tween.interpolate_property(
-		self, "modulate:a", modulate.a, value,
-		_animation_timeout, Tween.TRANS_LINEAR, Tween.EASE_OUT
+	var tween := create_tween()
+#	_tween.stop(self, "modulate:a")
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_LINEAR)
+	
+	tween.tween_property(
+		self, "modulate:a", value, _animation_timeout
 	)
-	_tween.start()
