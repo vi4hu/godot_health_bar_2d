@@ -8,6 +8,12 @@ extends TextureProgressBar
 @export var _animation_timeout:float = 1.0
 # offset of health bar from player
 @export var _offset:Vector2 = Vector2(0, -6)
+@export_group("Tracked Value")
+@export var signal_source: Node
+@export var tracked_signal: StringName
+@export var max_value_property: StringName
+@export var current_value_property: StringName
+@export_group("")
 
 # Colors #
 const _colors = {
@@ -25,6 +31,12 @@ var _timer: Timer
 
 func _ready() -> void:
 	_setup()
+	if signal_source and tracked_signal:
+		if max_value_property:
+			max_value = signal_source.get(max_value_property)
+		if current_value_property:
+			value = signal_source.get(current_value_property)
+		signal_source.connect(tracked_signal, _handle_value)
 
 
 func _setup() -> void:
